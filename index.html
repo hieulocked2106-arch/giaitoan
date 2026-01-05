@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Chatbot Giải Toán</title>
+    <style>
+        body { font-family: Arial; background: #f2f2f2; }
+        .chatbox {
+            width: 400px;
+            margin: 50px auto;
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        input { width: 75%; padding: 8px; }
+        button { padding: 8px; }
+        .bot { color: blue; margin: 5px 0; }
+        .user { color: black; margin: 5px 0; }
+    </style>
+</head>
+<body>
+
+<div class="chatbox">
+    <h3>🤖 Chatbot Giải Toán</h3>
+    <div id="chat"></div>
+    <input id="toan" placeholder="Nhập phép toán (vd: (2+3)*4)">
+    <button onclick="gui()">Gửi</button>
+</div>
+
+<script>
+function gui() {
+    let input = document.getElementById("toan").value;
+    let chat = document.getElementById("chat");
+
+    chat.innerHTML += `<div class='user'>👤 ${input}</div>`;
+
+    try {
+        let ketqua = eval(input);
+        chat.innerHTML += `<div class='bot'>🤖 Kết quả: ${ketqua}</div>`;
+    } catch {
+        chat.innerHTML += `<div class='bot'>🤖 Không hiểu phép toán</div>`;
+    }
+
+    document.getElementById("toan").value = "";
+}
+</script>
+
+</body>
+</html>
